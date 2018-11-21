@@ -36,7 +36,6 @@ class HomeController extends Controller
         $lunbo = Comic::where(['lunbo'=>1])->take(5)->get();
         $newdata = Comic::orderBy('created_at','desc')->take(8)->get();
         $seriesres = Series::all();
-
         foreach ($seriesres as $key => $item){
             $seriesdata[$key]['series']= $item->name;
             $seriesdata[$key]['enname']= $item->enname;
@@ -48,7 +47,6 @@ class HomeController extends Controller
                 ->get();
             $seriesdata[$key]['data'] = array_chunk($seriesdata[$key]['data']->toArray(), 4);
         }
-
 
         return view('comic.index',compact('tdk','lunbo','tuijian','newdata','seriesdata'));
     }
