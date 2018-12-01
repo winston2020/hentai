@@ -48,4 +48,13 @@ class ComicController extends Controller
             }
         }
     }
+
+    public function banner()
+    {
+        $res = DB::table('comic')
+            ->where(['lunbo'=>1])
+            ->select('id','name','author','comic_img_url','created_at')
+            ->get();
+        return response()->json(['status'=>200,'msg'=>'banner数据获取成功','data'=>$res]);
+    }
 }
