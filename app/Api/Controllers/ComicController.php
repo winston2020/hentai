@@ -26,29 +26,13 @@ class ComicController extends Controller
             ->skip($pagesize*($pagination-1))
             ->select('id','name','series_id','author','comic_img_url','userid','created_at')
             ->get();
-        $data = array_chunk($res->toArray(), 4);
+
         if ($res->isEmpty()){
             return response()->json(['status'=>500,'msg'=>'没有漫画数据']);
         }else{
-            return response()->json(['status'=>200,'msg'=>'获取漫画数据','data'=>$data,'hot'=>$hot]);
+            return response()->json(['status'=>200,'msg'=>'获取漫画数据','data'=>$res,'hot'=>$hot]);
         }
-
-//
-//        if (empty($seriesid)){
-//
-//        }else{
-//            $res = Comic::where('series_id',$seriesid)
-//                ->take($pagesize)
-//                ->skip($pagesize*($pagination-1))
-//                ->select('id','name','author','series_id','comic_img_url','userid','created_at')
-//                ->get();
-//            $data = array_chunk($res->toArray(), 4);
-//            if ($res->isEmpty()){
-//                return response()->json(['status'=>500,'msg'=>'没有漫画数据']);
-//            }else{
-//                return response()->json(['status'=>200,'msg'=>'获取漫画数据','data'=>$data]);
-//            }
-//        }
+        
     }
 
     public function banner()
