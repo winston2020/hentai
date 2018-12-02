@@ -1,3 +1,34 @@
+<<<<<<< HEAD
+﻿# robots.txt generated at http://tool.chinaz.com/robots/
+User-agent: *
+Disallow:
+Disallow: /plus/
+Disallow: /utility/
+Disallow: /5dm/css/
+Disallow: /convert/
+Disallow: /5dm/js/
+Disallow: /admin/
+Disallow: /js
+Disallow: /css
+Sitemap: http://www.hentaiclub.cn/sitemap.html
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+User-agent: *
+Disallow: 
+Disallow: /upload
+Disallow: /news
+Disallow: /forum.php
+Disallow: /user
+Disallow: /tag
+Disallow: /wordpress
+Disallow: /static
+Disallow: /js
+Disallow: /wp-login.php
+=======
+﻿# robots.txt generated at http://tool.chinaz.com/robots/
+=======
+>>>>>>> fbd70a919a19f55c822e223693ab5a5c6b6b6593
 User-agent: *
 Disallow: /upload
 Disallow: /news
@@ -15,6 +46,7 @@ Disallow: /convert
 Disallow: /zksgkl.txt
 Disallow: /plus
 Disallow: /utility
+<<<<<<< HEAD
 Disallow: /5dm/css
 Disallow: /convert
 Disallow: /5dm/js
@@ -22,3 +54,9 @@ Disallow: /admin
 Disallow: /js
 Disallow: /css
 Sitemap: http://www.hentaiclub.cn/sitemap.html
+>>>>>>> f2dde63b45141f34b87192af75b0d273ed3feaeb
+=======
+Disallow: /uuobv.txt
+Disallow: /cache
+>>>>>>> fbd70a919a19f55c822e223693ab5a5c6b6b6593
+>>>>>>> 3f958ede7e80aa096e6fe991298688499e61176b
