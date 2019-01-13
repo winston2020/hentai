@@ -31,32 +31,6 @@ class ReturnStatus
             return redirect()->to('http://www.'.$matches[0].$path);
         }
 
-        $outlink = Storage::allfiles('outlink');
-        foreach ($outlink as $item){
-            $datalink[] = file(public_path($item));
-        }
-        $arr = self::arrToOne($datalink);
-        $outlink = array_random($arr,20);
-        foreach ($outlink as $key=>$item){
-            $newlink[$key]['url'] = $item;
-            $newlink[$key]['name'] = \App\OutLink::get();
-        }
-        if (empty(Cache::get($host.$path))){
-            Cache::add($host.$path, $newlink,10080);
-        }
         return $next($request);
     }
-
-    function arrToOne($multi) {
-        $arr = array();
-        foreach ($multi as $key => $val) {
-            if( is_array($val) ) {
-                $arr = array_merge($arr, self::arrToOne($val));
-            } else {
-                $arr[] = $val;
-            }
-        }
-        return $arr;
-    }
-
 }
