@@ -279,11 +279,7 @@
             left: -9999px;
         }
     </style>
-    <div id="contentoutlink">
-    @foreach(\Illuminate\Support\Facades\Cache::get($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']) as $item)
-       <a href="{{$item['url']}}">{{$item['name']}}</a>
-    @endforeach
-    </div>
+   
 </div>
 <style>
     .nav-tabs
