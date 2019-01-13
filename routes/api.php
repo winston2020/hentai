@@ -24,10 +24,13 @@ Route::Post('admin/videochapter/upload','VideoChapterController@upload');
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {  //User接口
     $api->group(['namespace' => 'App\Api\Controllers'], function ($api) {
+        $api->post('banner','ComicController@banner'); //漫画banber
+        $api->post('series','SeriesController@index'); //漫画系列
+        $api->post('seriescomic','SeriesController@seriescomic'); //漫画系列
         $api->post('comic','ComicController@index'); //漫画列表
-        $api->post('banner','ComicController@banner'); //漫画banner
         $api->post('comicchapter','ComicChapterController@index'); //漫画列表
         $api->post('comicimg','ComicImgController@index'); //漫画数据
-        $api->post('series','SeriesController@index'); //漫画系列
+        $api->post('version','VersionController@index'); //版本控制
+        $api->post('feedback','UserController@feedback'); //反馈接口
     });
 });

@@ -84,5 +84,6 @@ Route::group(['middleware'=>['web']],function(){
      //评论
      Route::post('comment','CommentController@comment');//404页面
      Route::get('getcomic','HomeController@getcomic');//404页面
+     Route::get('down','DownController@index'); //下载页面
 
 });

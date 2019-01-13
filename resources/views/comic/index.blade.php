@@ -14,8 +14,8 @@
                                 <div class="vc_col-sm-12 wpb_column vc_column_container ">
                                     <div class="wpb_wrapper">
                                         {{--番剧放送入口--}}
-                                        <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=acf35ac26a46fa33643dd20c6a01b7817175c795d535e8eb9805ec53b8d7c8ff">
-                                            <img title="这些新番都被我萌承包了！(x" src="{{url('5dm/img/guanggao.jpg')}}" width="1140" height="100" style="border:0px;margin-bottom:5px;">
+                                        <a target="_blank" href="{{url('down')}}">
+                                            <img title="这些新番都被我萌承包了！(x" src="{{url('ad/ad3.jpg')}}" width="1140" height="100" style="border:0px;margin-bottom:5px;">
                                         </a>
                                         {{--番剧放送结束--}}
 
@@ -73,7 +73,7 @@
                                         <div class="clear"></div>
                                         {{--广告位招租--}}
                                         <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=acf35ac26a46fa33643dd20c6a01b7817175c795d535e8eb9805ec53b8d7c8ff">
-                                        <img class="img-responsive" title="广告位招租" src="http://www.cluai.cn/5dm/img/header.png" width="1140" height="50" style="border:0px;">
+                                        <img class="img-responsive" title="广告位招租" src="{{$tdk->ad2_img_url}}" width="1140" height="50" style="border:0px;">
                                         </a>
                                         {{--广告位招租--}}
 

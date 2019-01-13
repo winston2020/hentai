@@ -17,7 +17,7 @@ class ComicChapterController extends Controller
         if (empty($comicid)){
             return response()->json(['status'=>500,'msg'=>'漫画id不能为空']);
         }
-        $comic = Comic::select('id','name','comic_img_url','weekupdate','created_at','updated_at')->find($comicid);
+        $comic = Comic::select('id','name','comic_img_url','description','weekupdate','created_at','updated_at')->find($comicid);
         if (empty($comic)){
             return response()->json(['status'=>500,'msg'=>'没有漫画数据']);
         }else{

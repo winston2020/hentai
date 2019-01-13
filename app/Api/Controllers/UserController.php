@@ -3,6 +3,7 @@
 namespace App\Api\Controllers;
 
 use App\Area;
+use App\Feedback;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -11,13 +12,26 @@ class UserController extends Controller
     public function index(Request $request)
     {
 
-        $area =  Area::all();
-        if ($area->isEmpty()){
-            return response()->json(['status'=>500,'msg'=>'没有地区信息']);
-        }else{
-            return response()->json(['status'=>200,'msg'=>'城获取信息','data'=>$area]);
-        }
+     
     }
+
+    public function feedback(Request $request)
+    {
+         $text = $request->input('text');
+         if (empty($text)){
+             return response()->json(['msg'=>'反馈不能为空','status'=>500]);
+         }
+         $feedback =  new Feedback();
+         $feedback->text = $text;
+         $bool = $feedback->save();
+         if ($bool){
+             return response()->json(['msg'=>'您的反馈我们已经接受到了','status'=>200]);
+         }else{
+             return response()->json(['msg'=>'数据插入失败','status'=>200]);
+         }
+    }
+
+    
 
 
 
