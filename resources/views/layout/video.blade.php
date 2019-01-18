@@ -170,22 +170,53 @@
 
                         </script>
 
-                        <div id="log" style="float:right;">
-                            <ul class="nav navbar-nav navbar-right hidden-xs">
-                                <div id="login-reg"><span data-sign="0" id="user-login" class="user-login"> 登录</span>
-                                    <span data-sign="1" id="user-reg" class="user-reg">注册</span></div>
-                            </ul>
-                        </div>
+                        @if(\Illuminate\Support\Facades\Auth::check())
+                            <div class="user_curent navbar-right">
+                                <ul class="nav navbar-nav navbar-right hidden-xs">
+                                    <li class="main-menu-item dropdown">
+                                        <a class="account_cr" href="#">{{\Illuminate\Support\Facades\Auth::user()->name}}<i class="img-icon expired_member"></i>
+                                            @if(empty(\Illuminate\Support\Facades\Auth::user()->avatar))
+                                                <img src="/5dm/img/default_avatar.jpg" alt="" height="50" width="50" class="avatar">
+                                            @else
+                                                <img src="{{\Illuminate\Support\Facades\Auth::user()->avatar}}" alt="" height="50" width="50" class="avatar">
+                                            @endif
+                                        </a>
+                                        <span class="addnew_1"><a href="{{url('')}}/{{\Illuminate\Support\Facades\Auth::user()->id}}/message" title="站内消息">+0</a></span>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{url('#')}}/{{\Illuminate\Support\Facades\Auth::user()->id}}">用户中心</a></li>
+                                            <li><a href="{{url('#')}}">编辑资料</a></li>
+                                            <li><a href="{{url('#')}}">会员信息</a></li>
+                                            <li><a href="{{url('logout')}}">退出登录</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        @else
+                            <div id="log" style="float:right;">
+                                <ul class="nav navbar-nav navbar-right hidden-xs">
+                                    <div id="login-reg">
+                                        <span data-sign="0" id="user-login" class="user-login"> 登录</span>
+                                        <span data-sign="1" id="user-reg" class="user-reg">注册</span>
+                                    </div>
+                                </ul>
+                            </div>
+                        @endif
                         <ul class="nav navbar-nav hidden-xs nav-search-box navbar-right">
                             <li class="main-menu-item">
                                 <form class=" dark-form" action="{{url('search')}}">
                                     <div class="input-group">
-                                        <input type="text" name="s" class="form-control" placeholder="发现更♂大的世界" autocomplete="off">
+                                        <input type="text" name="s" id="searchdata4" class="form-control" placeholder="发现更♂大的世界" autocomplete="off">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-default maincolor1 maincolor1hover" type="submit">
+                                            <button class="btn btn-default maincolor1 maincolor1hover"  id="searchres4" type="button">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </span>
+                                        <script>
+                                            $("#searchres4").click(function(){
+                                                var x = $(" #searchdata4").val()
+                                                window.location.href="{{url('search')}}/"+x
+                                            });
+                                        </script>
                                     </div>
                                 </form>
                             </li>
@@ -195,12 +226,11 @@
                                 class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item">
                                 <a href="{{url('')}}/" class="menu-link main-menu-link">首页 </a>
                             </li>
-
-                            @foreach($nav as $item)
-                            <li id="nav-menu-item-35843" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item">
-                                <a href="{{url('comictag/'.$item->enname)}}" class="menu-link main-menu-link">{{$item->name}} </a>
-                            </li>
-                            @endforeach
+                            <li id="nav-menu-item-35843" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item"><a href="{{url('')}}" class="menu-link main-menu-link">首页 </a></li>
+                            <li id="nav-menu-item-29915" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"><a href="{{url('comictag/meng')}}" class="menu-link main-menu-link">萌系 </a></li>
+                            <li id="nav-menu-item-29868" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{url('comictag/gaoxiao')}}" class="menu-link main-menu-link">搞笑 </a></li>
+                            <li id="nav-menu-item-29868" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{url('comictag/huiyuan')}}" class="menu-link main-menu-link">会员的世界 </a></li>
+                            <li id="nav-menu-item-38131" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{url('page')}}" class="menu-link main-menu-link">动漫资讯 </a></li>
                         </ul>
                     </div>
                 </nav>
@@ -213,7 +243,7 @@
         <div id="animate" class="animate"
              style="font-size: 100px;height: 100px;line-height: 230px;text-shadow: 1px 1px 0 #ff3f1a, -1px -1px 0 #00a7e0;color: #ffffff;text-align: center;">
         </div>
-        <a style=" position: absolute; bottom: 0; left: 0; z-index: 1; font-size: 13px; padding: 0 5px; background-color: rgba(0,0,0,0.37); color: #fff;">D站限时开放注册中，快来签订契约成为魔法师吧~</a>
+        <a style=" position: absolute; bottom: 0; left: 0; z-index: 1; font-size: 13px; padding: 0 5px; background-color: rgba(0,0,0,0.37); color: #fff;">H站限时开放注册中，快来签订契约成为魔法师吧~</a>
     </div>
     <div id="slider"></div>
 
