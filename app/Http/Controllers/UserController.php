@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Host;
 use App\Keyword;
 use App\Liuyan;
+use App\Series;
 use App\User;
 use http\Env\Response;
 use Illuminate\Http\Request;
@@ -80,21 +81,24 @@ class UserController extends Controller
     public  function index($id)
     {
         $tdk = $this->tdk;
+        $nav = Series::all();
         if (empty($id)){
-            return view('404','tdk');
+            return view('404',compact('tdk','nav'));
         }
         $user =  User::where(['id'=>$id])->first();
         if (empty($user)){
-            return view('404','tdk');
+            return view('404',compact('tdk','nav'));
         }
-        return view('user.index',compact('user','tdk'));
+
+        return view('user.index',compact('user','tdk','nav'));
     }
 
     public function loginview()
     {
         $tdk = $this->tdk;
         $user =null;
-        return view('user.index',compact('tdk','user'));
+        $nav = Series::all();
+        return view('user.index',compact('tdk','user','nav'));
     }
 
     public function liuyan(Request $request)

@@ -51,6 +51,7 @@ Route::get('spider/show','LogController@show');
 Route::group(['middleware'=>['web']],function(){
      Route::get('/','HomeController@index');
      Route::get('login','UserController@loginview');
+     Route::get('regist','UserController@regist');
      Route::post('login','UserController@login');
      Route::post('regist','UserController@register');
      Route::get('logout','UserController@goout');//退出功能
