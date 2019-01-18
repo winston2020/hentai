@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Host;
+use App\Series;
 use App\Version;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,8 @@ class DownController extends Controller
         $this->tdk = Host::where(['name'=>$suf])->first();
         $tdk = $this->tdk;
         $version = Version::first();
-        return view('down',compact('tdk','version'));
+        $nav = Series::all();
+        return view('down',compact('tdk','version','nav'));
     }
 
 }
