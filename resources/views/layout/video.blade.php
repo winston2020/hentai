@@ -231,6 +231,7 @@
                             <li id="nav-menu-item-29868" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{url('comictag/gaoxiao')}}" class="menu-link main-menu-link">搞笑 </a></li>
                             <li id="nav-menu-item-29868" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{url('comictag/huiyuan')}}" class="menu-link main-menu-link">会员的世界 </a></li>
                             <li id="nav-menu-item-38131" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{url('page')}}" class="menu-link main-menu-link">动漫资讯 </a></li>
+                            <li id="nav-menu-item-38131" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{url('down')}}" class="menu-link main-menu-link">App下载 </a></li>
                         </ul>
                     </div>
                 </nav>
@@ -257,6 +258,7 @@
             <ul>
                 <li class="canvas-close"><a href="{{url('/#')}}"><i class="fa fa-times"></i> 关闭</a></li>
                 <li class="menu-item current_so"><a target="_blank" href="{{url('search')}}">搜索漫画</a></li>
+                <li class="menu-item current_so"><a target="_blank" href="{{url('down')}}">App下载</a></li>
                 <li id="menu-item-35843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item menu-item-35843">
                     <a href="{{url('/')}}">首页</a>
                 </li>
