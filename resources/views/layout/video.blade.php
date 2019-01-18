@@ -195,6 +195,12 @@
                                 class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item">
                                 <a href="{{url('')}}/" class="menu-link main-menu-link">首页 </a>
                             </li>
+
+                            @foreach($nav as $item)
+                            <li id="nav-menu-item-35843" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item">
+                                <a href="{{url('comictag/'.$item->enname)}}" class="menu-link main-menu-link">{{$item->name}} </a>
+                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </nav>
