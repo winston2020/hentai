@@ -301,10 +301,7 @@
             </ul>
         </div>
     </nav>
-
 </div>
-
-
 <script type="text/javascript">$(function () {
         $("#updown > #lamu img").eq(0).click(function () {
             $("html,body").animate({scrollTop: 0}, 800);
@@ -326,16 +323,11 @@
 <script type="text/javascript" src="{{url('5dm')}}/js/jquery.colorbox-min.js"></script>
 <script type="text/javascript" src="{{url('5dm')}}/js/jquery.tooltipster.js"></script>
 <script type="text/javascript" src="{{url('5dm')}}/js/comment-reply.min.js"></script>
-
 <script type="text/javascript" src="{{url('5dm')}}/js/mashmenu.js"></script>
 <script type="text/javascript" src="{{url('5dm')}}/js/wp-embed.min.js"></script>
 <script type="text/javascript" src="{{url('5dm')}}/js/js_composer_front.js"></script>
-
-
 <div id="cboxOverlay" style="display: none;"></div>
 <script>
-
-
     $("#user-login").click(function(){
         $("#sign-go").addClass("#sign loginPart loginpart part sign");
     });
@@ -364,7 +356,6 @@
             $("#user-login").trigger("click");
         }
     });
-
 </script>
 
 </body>
