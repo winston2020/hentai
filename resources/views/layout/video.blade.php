@@ -226,7 +226,6 @@
                                 class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item">
                                 <a href="{{url('')}}/" class="menu-link main-menu-link">首页 </a>
                             </li>
-                            <li id="nav-menu-item-35843" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item"><a href="{{url('')}}" class="menu-link main-menu-link">首页 </a></li>
                             <li id="nav-menu-item-29915" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"><a href="{{url('comictag/meng')}}" class="menu-link main-menu-link">萌系 </a></li>
                             <li id="nav-menu-item-29868" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{url('comictag/gaoxiao')}}" class="menu-link main-menu-link">搞笑 </a></li>
                             <li id="nav-menu-item-29868" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{url('comictag/huiyuan')}}" class="menu-link main-menu-link">会员的世界 </a></li>
