@@ -109,7 +109,8 @@ class HomeController extends Controller
     public function page404()
     {
         $tdk = $this->tdk;
-        return view('404',compact('tdk'));
+        $nav = Series::all();
+        return view('404',compact('tdk','nav'));
     }
 
     public function gettagdata(Request $request)

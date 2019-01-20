@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0019)https://www.5dm.tv/ -->
+<!-- saved from url=(0019){{url('')}}/ -->
 <html lang="zh-CN" class=" js_active  vc_desktop  vc_transform  vc_transform "><!--<![endif]-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,27 +11,7 @@
     <meta name="keywords" content="@yield('keywords')">
     <meta name="description" content="@yield('description')">
     <link rel="profile" href="http://gmpg.org/xfn/11">
-    <link rel="pingback" href="https://www.5dm.tv/xmlrpc.php">
-    <!--[if lt IE 9]>
-    <script src="/wp-content/themes/5moe/js/html5.js" type="text/javascript"></script><![endif]--><!--[if lte IE 9]>
-    <link rel="stylesheet" type="text/css" href="/wp-content/themes/5moe/css/ie.css"/><![endif]-->
-    <script type="text/javascript">var retina = 'retina=' + window.devicePixelRatio + ';' + retina;
-        document.cookie = retina;
-        if (document.cookie) { // document.location.reload(true);}</script>
-    <meta property="description" content="">
-    <script type="text/javascript"> var um = {
-            "ajax_url": "https:\/\/www.5dm.tv\/wp-admin\/admin-ajaxxx.php",
-            "admin_url": "https:\/\/www.5dm.tv\/wp-admin\/",
-            "wp_url": "https:\/\/www.5dm.tv",
-            "um_url": "\/wp-content\/plugins\/5moeuser\/",
-            "uid": 0,
-            "is_admin": 0,
-            "redirecturl": "https:\/\/www.5dm.tv\/",
-            "loadingmessage": "\u6b63\u5728\u8bf7\u6c42\u4e2d\uff0c\u8bf7\u7a0d\u7b49...",
-            "paged": 1,
-            "cpage": 1,
-            "timthumb": "\/wp-content\/plugins\/5moeuser\/func\/timthumb.php?src="
-        }; </script>
+    <script type="text/javascript"> var um = {}; </script>
     <link rel="dns-prefetch" href="https://fonts.loli.net/">
     <link rel="dns-prefetch" href="https://s.w.org/">
     <link rel="stylesheet" id="wp-block-library-css" href="{{url('5dm')}}/css/style.min.css"
@@ -60,7 +40,6 @@
           type="text/css" media="all">
     <script type="text/javascript" src="{{url('5dm')}}/js/jquery.min.js"></script>
     <!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href="/wp-content/plugins/js_composer/assets/css/vc-ie8.css" media="screen">
     <![endif]-->
     <noscript>
         <style> .wpb_animate_when_almost_visible {
@@ -176,7 +155,7 @@
                             <button type="button" class="navbar-toggle off-canvas-toggle" id="showordown"
                                     style="user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); touch-action: none;">
                                 <span class="sr-only">切换导航</span> <i class="fa fa-reorder fa-bars fa-lg"></i></button>
-                            <a class="logo" href="https://www.5dm.tv/">
+                            <a class="logo" href="{{url('')}}/">
                                 <img src="{{url('5dm/img/logo1510.png')}}" alt="logo">
                             </a>
                         </div>
@@ -191,22 +170,53 @@
 
                         </script>
 
-                        <div id="log" style="float:right;">
-                            <ul class="nav navbar-nav navbar-right hidden-xs">
-                                <div id="login-reg"><span data-sign="0" id="user-login" class="user-login"> 登录</span>
-                                    <span data-sign="1" id="user-reg" class="user-reg">注册</span></div>
-                            </ul>
-                        </div>
+                        @if(\Illuminate\Support\Facades\Auth::check())
+                            <div class="user_curent navbar-right">
+                                <ul class="nav navbar-nav navbar-right hidden-xs">
+                                    <li class="main-menu-item dropdown">
+                                        <a class="account_cr" href="#">{{\Illuminate\Support\Facades\Auth::user()->name}}<i class="img-icon expired_member"></i>
+                                            @if(empty(\Illuminate\Support\Facades\Auth::user()->avatar))
+                                                <img src="/5dm/img/default_avatar.jpg" alt="" height="50" width="50" class="avatar">
+                                            @else
+                                                <img src="{{\Illuminate\Support\Facades\Auth::user()->avatar}}" alt="" height="50" width="50" class="avatar">
+                                            @endif
+                                        </a>
+                                        <span class="addnew_1"><a href="{{url('')}}/{{\Illuminate\Support\Facades\Auth::user()->id}}/message" title="站内消息">+0</a></span>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{url('#')}}/{{\Illuminate\Support\Facades\Auth::user()->id}}">用户中心</a></li>
+                                            <li><a href="{{url('#')}}">编辑资料</a></li>
+                                            <li><a href="{{url('#')}}">会员信息</a></li>
+                                            <li><a href="{{url('logout')}}">退出登录</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        @else
+                            <div id="log" style="float:right;">
+                                <ul class="nav navbar-nav navbar-right hidden-xs">
+                                    <div id="login-reg">
+                                        <span data-sign="0" id="user-login" class="user-login"> 登录</span>
+                                        <span data-sign="1" id="user-reg" class="user-reg">注册</span>
+                                    </div>
+                                </ul>
+                            </div>
+                        @endif
                         <ul class="nav navbar-nav hidden-xs nav-search-box navbar-right">
                             <li class="main-menu-item">
                                 <form class=" dark-form" action="{{url('search')}}">
                                     <div class="input-group">
-                                        <input type="text" name="s" class="form-control" placeholder="发现更♂大的世界" autocomplete="off">
+                                        <input type="text" name="s" id="searchdata4" class="form-control" placeholder="发现更♂大的世界" autocomplete="off">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-default maincolor1 maincolor1hover" type="submit">
+                                            <button class="btn btn-default maincolor1 maincolor1hover"  id="searchres4" type="button">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </span>
+                                        <script>
+                                            $("#searchres4").click(function(){
+                                                var x = $(" #searchdata4").val()
+                                                window.location.href="{{url('search')}}/"+x
+                                            });
+                                        </script>
                                     </div>
                                 </form>
                             </li>
@@ -214,30 +224,13 @@
                         <ul class="nav navbar-nav hidden-xs">
                             <li id="nav-menu-item-35843"
                                 class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item">
-                                <a href="https://www.5dm.tv/" class="menu-link main-menu-link">首页 </a></li>
-                            <li id="nav-menu-item-29915"
-                                class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
-                                <a href="https://www.5dm.tv/bgm" class="menu-link main-menu-link">番组 </a></li>
-                            <li id="nav-menu-item-38131"
-                                class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category">
-                                <a href="https://www.5dm.tv/video/news" class="menu-link main-menu-link">动漫资讯 </a></li>
-                            <li id="nav-menu-item-38132"
-                                class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children parent dropdown">
-                                <a href="https://www.5dm.tv/timeline"
-                                   class="menu-link dropdown-toggle disabled main-menu-link" data-toggle="dropdown">新番时间表 </a>
-                                <ul class="dropdown-menu menu-depth-1">
-                                    <li id="nav-menu-item-41030"
-                                        class="sub-menu-item menu-item-depth-1 menu-item menu-item-type-custom menu-item-object-custom">
-                                        <a href="https://www.5dm.tv/mark/201801"
-                                           class="menu-link sub-menu-link">一月新番 </a></li>
-                                </ul>
+                                <a href="{{url('')}}/" class="menu-link main-menu-link">首页 </a>
                             </li>
-                            <li id="nav-menu-item-29870"
-                                class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category">
-                                <a href="https://www.5dm.tv/video/end" class="menu-link main-menu-link">完结番组 </a></li>
-                            <li id="nav-menu-item-29868"
-                                class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category">
-                                <a href="https://www.5dm.tv/video/ova" class="menu-link main-menu-link">剧场•OVA </a></li>
+                            <li id="nav-menu-item-29915" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"><a href="{{url('comictag/meng')}}" class="menu-link main-menu-link">萌系 </a></li>
+                            <li id="nav-menu-item-29868" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{url('comictag/gaoxiao')}}" class="menu-link main-menu-link">搞笑 </a></li>
+                            <li id="nav-menu-item-29868" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{url('comictag/huiyuan')}}" class="menu-link main-menu-link">会员的世界 </a></li>
+                            <li id="nav-menu-item-38131" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{url('page')}}" class="menu-link main-menu-link">动漫资讯 </a></li>
+                            <li id="nav-menu-item-38131" class="main-menu-item menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{url('down')}}" class="menu-link main-menu-link">App下载 </a></li>
                         </ul>
                     </div>
                 </nav>
@@ -250,39 +243,12 @@
         <div id="animate" class="animate"
              style="font-size: 100px;height: 100px;line-height: 230px;text-shadow: 1px 1px 0 #ff3f1a, -1px -1px 0 #00a7e0;color: #ffffff;text-align: center;">
         </div>
-        <a style=" position: absolute; bottom: 0; left: 0; z-index: 1; font-size: 13px; padding: 0 5px; background-color: rgba(0,0,0,0.37); color: #fff;">D站限时开放注册中，快来签订契约成为魔法师吧~</a>
+        <a style=" position: absolute; bottom: 0; left: 0; z-index: 1; font-size: 13px; padding: 0 5px; background-color: rgba(0,0,0,0.37); color: #fff;">H站限时开放注册中，快来签订契约成为魔法师吧~</a>
     </div>
     <div id="slider"></div>
 
     @yield('content')
 
-    <footer class="dark-div">
-        <div id="bottom" style="background: #ffffff;padding: 0px 0;margin-bottom: 30px;">
-            <div class="container">
-                <div class="row"></div>
-            </div>
-        </div>
-        <div id="bottom-nav">
-            <div class="container">
-                <div class="row">
-                    <div class="copyright col-md-6">©2014-2018 五弹幕 - 5dm.tv︱dilili.net</div>
-                    <nav class="col-md-6">
-                        <ul class="bottom-menu list-inline pull-right">
-                            <li id="menu-item-36678"
-                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36678"><a
-                                        href="https://www.5dm.tv/aboutus">关于我们</a></li>
-                            <li id="menu-item-32"
-                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32"><a
-                                        target="_blank" href="https://www.5dm.tv/aboutus">联系我们</a></li>
-                            <li id="menu-item-29356"
-                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29356"><a
-                                        target="_blank" href="https://www.5dm.tv/html/duty.html">资源免责声明</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </footer>
     <div class="wrap-overlay"></div>
 </div>
 <div id="off-canvas">
@@ -291,6 +257,7 @@
             <ul>
                 <li class="canvas-close"><a href="{{url('/#')}}"><i class="fa fa-times"></i> 关闭</a></li>
                 <li class="menu-item current_so"><a target="_blank" href="{{url('search')}}">搜索漫画</a></li>
+                <li class="menu-item current_so"><a target="_blank" href="{{url('down')}}">App下载</a></li>
                 <li id="menu-item-35843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item menu-item-35843">
                     <a href="{{url('/')}}">首页</a>
                 </li>
@@ -306,6 +273,34 @@
 </div>
 <script>off_canvas_enable = 1;</script>
 
+<div class="main_nav_bottom hidden-lg">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container" align="center">
+            <ul class="nav nav-tabs nav-tabs-justified">
+                <div class="row" align="center">
+                    <div class="col-md-6 col-sm-6 col-xs-6" align="center"><li><a href="{{url('')}}"><img src="{{url('5dm/img/manhua.png')}}" alt=""></a></li></div>
+                    {{--<div class="col-md-3 col-sm-3 col-xs-3" align="center"><li><a href="{{url('bangumi')}}"><img src="{{url('5dm/img/dongman.png')}}" alt=""></a></li></div>--}}
+                    {{--<div class="col-md-3 col-sm-3 col-xs-3" align="center"><li><a href="{{url('video/movie')}}"><img src="{{url('5dm/img/movies.png')}}" alt=""></a></li></div>--}}
+                    @if(\Illuminate\Support\Facades\Auth::check())
+                        <div class="col-md-6 col-sm-6 col-xs-6" align="center"><li><a href="{{url('u')}}/{{\Illuminate\Support\Facades\Auth::user()->id}}.html"><img src="{{url('5dm/img/me.png')}}" alt=""></a></li></div>
+                    @else
+                        <div class="col-md-6 col-sm-6 col-xs-6" align="center"><li><a href="{{url('login')}}"><img src="{{url('5dm/img/me.png')}}" alt=""></a></li></div>
+                    @endif
+                </div>
+                <div class="row" align="center">
+                    <div class="col-md-6 col-sm-6 col-xs-6" align="center"><li><a href="{{url('')}}">漫画</a></li></div>
+                    {{--<div class="col-md-3 col-sm-3 col-xs-3" align="center"><li><a href="{{url('bangumi')}}/">动漫</a></li></div>--}}
+                    {{--<div class="col-md-3 col-sm-3 col-xs-3" align="center"><li><a href="{{url('video/movie')}}/">电影</a></li></div>--}}
+                    @if(\Illuminate\Support\Facades\Auth::check())
+                        <div class="col-md-6 col-sm-6 col-xs-6" align="center"><li><a href="{{url('u')}}/{{\Illuminate\Support\Facades\Auth::user()->id}}.html">我</a></li></div>
+                    @else
+                        <div class="col-md-6 col-sm-6 col-xs-6" align="center"><li><a href="{{url('login')}}">我</a></li></div>
+                    @endif
+                </div>
+            </ul>
+        </div>
+    </nav>
+</div>
 <script type="text/javascript">$(function () {
         $("#updown > #lamu img").eq(0).click(function () {
             $("html,body").animate({scrollTop: 0}, 800);
@@ -327,52 +322,63 @@
 <script type="text/javascript" src="{{url('5dm')}}/js/jquery.colorbox-min.js"></script>
 <script type="text/javascript" src="{{url('5dm')}}/js/jquery.tooltipster.js"></script>
 <script type="text/javascript" src="{{url('5dm')}}/js/comment-reply.min.js"></script>
-
 <script type="text/javascript" src="{{url('5dm')}}/js/mashmenu.js"></script>
 <script type="text/javascript" src="{{url('5dm')}}/js/wp-embed.min.js"></script>
 <script type="text/javascript" src="{{url('5dm')}}/js/js_composer_front.js"></script>
-
-
 <div id="cboxOverlay" style="display: none;"></div>
-<div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;">
-    <div id="cboxWrapper">
-        <div>
-            <div id="cboxTopLeft" style="float: left;"></div>
-            <div id="cboxTopCenter" style="float: left;"></div>
-            <div id="cboxTopRight" style="float: left;"></div>
-        </div>
-        <div style="clear: left;">
-            <div id="cboxMiddleLeft" style="float: left;"></div>
-            <div id="cboxContent" style="float: left;">
-                <div id="cboxTitle" style="float: left;"></div>
-                <div id="cboxCurrent" style="float: left;"></div>
-                <button type="button" id="cboxPrevious"></button>
-                <button type="button" id="cboxNext"></button>
-                <button id="cboxSlideshow"></button>
-                <div id="cboxLoadingOverlay" style="float: left;"></div>
-                <div id="cboxLoadingGraphic" style="float: left;"></div>
-            </div>
-            <div id="cboxMiddleRight" style="float: left;"></div>
-        </div>
-        <div style="clear: left;">
-            <div id="cboxBottomLeft" style="float: left;"></div>
-            <div id="cboxBottomCenter" style="float: left;"></div>
-            <div id="cboxBottomRight" style="float: left;"></div>
-        </div>
-    </div>
-    <div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div>
-</div>
-<div class="tooltipster-base tooltipster-fade tooltipster-default tooltipster-fade-show"
-     style="pointer-events: auto; transition-duration: 350ms; animation-duration: 350ms; top: 438px; left: 820px;">
-    <div class="tooltipster-content"><h4 class="gv-title">哥布林杀手【已完结/共13集】</h4>
-        <div class="gv-ex">“我不拯救世界，只管杀哥布林。” 据说这间边境公会里，有个只靠讨伐哥布林升上了银等级（位列第三位）的罕见存在… […]</div>
-    </div>
-    <div class="tooltipster-arrow-right tooltipster-arrow" style=""><span class="tooltipster-arrow-border"
-                                                                          style="margin-left: -1px; border-color: rgb(207, 207, 207);;"></span><span
-                style="border-color:rgb(255, 255, 255);"></span></div>
-</div>
+<script>
+    $("#user-login").click(function(){
+        $("#sign-go").addClass("#sign loginPart loginpart part sign");
+    });
+
+
+    $(function(){
+        $("#register-active").click(function(){
+            $("#sign-dowm").addClass("#sign part register registerPart registerpart");
+
+        });
+    });
+    $(function(){
+        $("#user-reg").click(function(){
+            $("#sign-dowm").addClass("#sign part register registerPart registerpart");
+        });
+    });
+    $(function(){
+        $("#login-active").click(function(){
+            $("#sign-go").addClass("#sign loginPart loginpart part sign");
+        });
+    });
+
+    $(function(){
+        var path = "{{ $_SERVER['REQUEST_URI']}}"
+        if(path=="/login"){
+            $("#user-login").trigger("click");
+        }
+    });
+</script>
+
 </body>
 <script>
-
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?7947cb8d00af9a26d4ebe68d1ad30216";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
 </script>
-</html>      
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+</html>
