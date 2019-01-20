@@ -14,6 +14,12 @@ class ComicController extends Controller
     {
         $pagination =  $request->input('pagination');
         $pagesize =  $request->input('pagesize');
+        if (empty($pagination)){
+            return response()->json(['status'=>500,'msg'=>'页码不能为空']);
+        }
+        if (empty($pagesize)){
+            return response()->json(['status'=>500,'msg'=>'每页数量不能为空']);
+        }
         $res = Comic::where('id','>',0)
             ->take($pagesize)
             ->skip($pagesize*($pagination-1))
