@@ -47,8 +47,8 @@ class HomeController extends Controller
                 ->get();
             $seriesdata[$key]['data'] = array_chunk($seriesdata[$key]['data']->toArray(), 4);
         }
-
-        return view('comic.index',compact('tdk','lunbo','tuijian','newdata','seriesdata'));
+        $nav = Series::all();
+        return view('comic.index',compact('tdk','lunbo','tuijian','newdata','seriesdata','nav'));
     }
 
     function object_to_array($obj){
@@ -70,7 +70,8 @@ class HomeController extends Controller
         $id = array_column($dataid, 'comic_id');
         $fenye = Comic::whereIn('id',$id)->paginate(32);
         $data = array_chunk($fenye->toArray()['data'], 4);
-        return view('comic.list',compact('fenye','data','tag'));
+        $nav = Series::all();
+        return view('comic.list',compact('fenye','data','tag','nav'));
     }
 
     public function series($series)
@@ -89,7 +90,8 @@ class HomeController extends Controller
             $fenye = Comic::where(['series_id'=>$series->id])->paginate(32);
             $data = array_chunk($fenye->toArray()['data'], 4);
         }
-        return view('comic.list',compact('tdk','fenye','data','series'));
+        $nav = Series::all();
+        return view('comic.list',compact('tdk','fenye','data','series','nav'));
     }
 
     public function search($data)
@@ -100,9 +102,8 @@ class HomeController extends Controller
         }
         $fenye =  Comic::where('name','like','%'.$data.'%')->paginate(32);
         $comicdata = array_chunk($fenye->toArray()['data'], 4);
-//        $videofenye =  Video::where('name','like','%'.$data.'%')->paginate(32);
-//        $videodata = array_chunk($videofenye->toArray()['data'], 4);
-        return view('search',compact('comicdata','fenye','videodata','tdk'));
+        $nav = Series::all();
+        return view('search',compact('comicdata','fenye','videodata','tdk','nav'));
     }
 
     public function page404()
@@ -157,7 +158,8 @@ class HomeController extends Controller
             ->select('comic_chapter.chapter','comic_chapter.number','comic_chapter.id','chapter_img.comic_img_url','comic_chapter.created_at')
             ->get();
         $chaper = array_chunk($chaperdata->toArray(), 4);
-        return view('comic.comicinfo',compact('tdk','comic','chaper'));
+        $nav = Series::all();
+        return view('comic.comicinfo',compact('tdk','comic','chaper','nav'));
     }
 
     public function fanchapter($account)
@@ -168,7 +170,8 @@ class HomeController extends Controller
             ->join('chapter_img', 'comic_chapter.id', '=', 'chapter_img.chapter_id')
             ->get();
         $chaper = array_chunk($chaperdata->toArray(), 4);
-        return view('comic.comicinfo',compact('tdk','comic','chaper'));
+        $nav = Series::all();
+        return view('comic.comicinfo',compact('tdk','comic','chaper','nav'));
     }
 
     public function read($id)
@@ -191,7 +194,8 @@ class HomeController extends Controller
             $comicimg = ComicImg::where(['chapter_id' => $id])->get();
             $befordata = ComicChapter::where(['comic_id'=>$comicchapter->comic_id,'number'=>$comicchapter->number-1])->first();
             $lastdata = ComicChapter::where(['comic_id'=>$comicchapter->comic_id,'number'=>$comicchapter->number+1])->first();
-            return view('comic.read', compact('tdk','comicimg', 'comicchapter', 'comic', 'befordata', 'lastdata'));
+            $nav = Series::all();
+            return view('comic.read', compact('tdk','comicimg', 'comicchapter', 'comic', 'befordata', 'lastdata','nav'));
         }
     }
 

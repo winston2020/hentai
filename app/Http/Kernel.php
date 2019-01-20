@@ -2,7 +2,7 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\Return301;
+use App\Http\Middleware\EnableCrossRequestMiddleware;
 use App\Http\Middleware\ReturnStatus;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -21,6 +21,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
+        EnableCrossRequestMiddleware::class,
         ReturnStatus::class,
     ];
 

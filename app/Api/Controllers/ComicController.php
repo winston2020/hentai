@@ -12,16 +12,18 @@ class ComicController extends Controller
 {
     public function index(Request $request)
     {
-        $hot = Comic::orderby('click_number')->select('id','name','author','comic_img_url')->take(6)->get();
-        $res = DB::table('comic')
-            ->take(12)
-            ->where(['tuijie'=>1])
-            ->select('id','name','series_id','author','comic_img_url','userid','created_at')
+        $pagination =  $request->input('pagination');
+        $pagesize =  $request->input('pagesize');
+        $res = Comic::where('id','>',0)
+            ->take($pagesize)
+            ->skip($pagesize*($pagination-1))
+            ->select('id','name','author','series_id','description','comic_img_url','userid','click_number','created_at')
+            ->orderby('click_number','desc')
             ->get();
         if ($res->isEmpty()){
             return response()->json(['status'=>500,'msg'=>'没有漫画数据']);
         }else{
-            return response()->json(['status'=>200,'msg'=>'获取漫画数据','data'=>$res,'hot'=>$hot]);
+            return response()->json(['status'=>200,'msg'=>'获取漫画数据','data'=>$res]);
         }
     }
 
