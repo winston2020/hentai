@@ -5,6 +5,8 @@
     <sitemap>
         <loc>{{url('comic')}}/{{$item->id}}.html</loc>
         <lastmod>{{ $item->updated_at }}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
     </sitemap>
     @endforeach
     @endif
@@ -14,6 +16,8 @@
     <sitemap>
         <loc>{{url('read')}}/{{$item->id}}.html</loc>
         <lastmod>{{ $item->updated_at }}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
     </sitemap>
     @endforeach
     @endif

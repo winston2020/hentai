@@ -16,9 +16,9 @@ class SiteMapController extends Controller
         }else{
             $id = $id;
         }
-        $comic = Comic::select('id','updated_at')->skip(($id*10000))->limit(10000)->orderBy('updated_at', 'desc')->get();
+        $comic = Comic::select('id','updated_at')->skip(($id*2000))->limit(2000)->orderBy('updated_at', 'desc')->get();
 
-        $comicchapter = ComicChapter::select('id','updated_at')->skip(($id*10000))->limit(10000)->orderBy('updated_at', 'desc')->get();
+        $comicchapter = ComicChapter::select('id','updated_at')->skip(($id*2000))->limit(2000)->orderBy('updated_at', 'desc')->get();
 
         return response()->view('sitemap.index', [
             'comic' => $comic,
