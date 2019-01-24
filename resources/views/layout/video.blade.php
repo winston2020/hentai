@@ -48,10 +48,11 @@
     </noscript>
 
     <script src="{{url('5dm')}}/js/jquery.lazyload.js" type="text/javascript"></script>
-    <script type="text/javascript">if (self != top) {
+    <script type="text/javascript">
+        if (self != top) {
             location.href = "about:blank"
-        }
-        ;</script>
+        };
+    </script>
     <link rel="stylesheet" href="{{url('5dm')}}/css/OwO.min.css">
 </head>
 <body class="home page-template page-template-page-templates page-template-full-width page-template-page-templatesfull-width-php page page-id-6 full-width custom-background-empty wpb-js-composer js-comp-ver-4.4.3 vc_responsive "
@@ -91,7 +92,6 @@
                             if (data.status ==200){
                                 window.location.href = "{{url('')}}";
                             }else{
-
                                 $("#loginerror").append(data.msg)
                             }
                         }
@@ -217,6 +217,7 @@
                                                 if(keyCode == "13"){
                                                     var x = $(" #searchdata4").val()
                                                     window.location.href="{{url('search')}}/"+x
+                                                    event.preventDefault();
                                                 }
                                             });
 

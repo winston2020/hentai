@@ -27,7 +27,7 @@
                                         if(keyCode == "13"){
                                             var x = $(" #searchdata1").val()
                                             window.location.href="{{url('search')}}/"+x
-
+                                            event.preventDefault();
                                         }
                                     });
                                     $("#searchres1").click(function(){
