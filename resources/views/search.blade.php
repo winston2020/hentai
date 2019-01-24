@@ -9,27 +9,37 @@
                 <div id="content" class="col-md-12" role="main">
                     <section class="video-listing">
                         <div class="video-listing-head">
-                            <h2 class="light-title">搜索结果</h2>
-                            <div class="video-listing-filter">
-                                <div class="btn-group btn-group-sm hidden-xs"> <a href="#" class="btn btn-default maincolor2hover current">日期</a>
-                                    <a href="#" class="btn btn-default maincolor2hover ">标题</a>
-                                    <a href="#" class="btn btn-default maincolor2hover ">收藏</a>
-                                    <a href="#" class="btn btn-default maincolor2hover com-ment ">评论</a>
-                                </div>
-                                <div class="dropdown visible-xs btn-group">
-                                    <button type="button" class="btn btn-default btn-block dropdown-toggle visible-xs" data-toggle="dropdown"> 排序方式 <i class="fa fa-angle-down pull-right"></i> </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#" class="btn btn-default maincolor2hover current">日期</a></li>
-                                        <li><a href="#" class="btn btn-default maincolor2hover ">标题</a></li>
-                                        <li><a href="#" class="btn btn-default maincolor2hover ">战斗力</a></li>
-                                        <li><a href="#" class="btn btn-default maincolor2hover com-ment ">评论</a></li>
-                                    </ul>
-                                </div>
+                            <div class="search" style="margin-top: 50px; ">
+                                <form class="light-form" id="fangwen2" action="{{url('search')}}">
+                                    <div class="input-group" >
+                                        <input type="text" id="searchdata1" class="form-control" placeholder="兄嘚.多搜几下就能找到你的老婆."
+                                               autocomplete="off">
+                                        <span class="input-group-btn">
+                                    <button class="btn btn-default maincolor1 maincolor1hover" id="searchres1" type="button">
+                                        <i class="fa fa-search"></i></button>
+                                </span>
+                                        <script>
+                                            $('#fangwen2').on("keydown",function(event){
+                                                var keyCode = event.keyCode || event.which;
+                                                if(keyCode == "13"){
+                                                    var x = $(" #searchdata1").val()
+                                                    window.location.href="{{url('search')}}/"+x
+                                                    event.preventDefault();
+                                                }
+                                            });
+                                            $("#searchres1").click(function(){
+                                                var x = $(" #searchdata1").val()
+                                                window.location.href="{{url('search')}}/"+x
+                                            });
+                                        </script>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 
-                        <div class="video-listing-content ">
-                            <h2 class="light-title">漫画</h2>
+
+                        <div class="video-listing-content " style="margin-top: 20px">
+                            <h2 class="light-title">搜索结果</h2>
                             <div class="post_ajax_tm">
                                 @foreach($comicdata as $key => $item)
                                 <div class="row">
