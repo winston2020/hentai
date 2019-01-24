@@ -203,15 +203,23 @@
                         @endif
                         <ul class="nav navbar-nav hidden-xs nav-search-box navbar-right">
                             <li class="main-menu-item">
-                                <form class=" dark-form" action="{{url('search')}}">
+                                <form class=" dark-form"  id="fangwen" action="{{url('search')}}">
                                     <div class="input-group">
-                                        <input type="text" name="s" id="searchdata4" class="form-control" placeholder="发现更♂大的世界" autocomplete="off">
+                                        <input type="text" name="/" id="searchdata4" class="form-control" placeholder="发现更♂大的世界" autocomplete="off">
                                         <span class="input-group-btn">
                                             <button class="btn btn-default maincolor1 maincolor1hover"  id="searchres4" type="button">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </span>
                                         <script>
+                                            $('#fangwen').on("keydown",function(event){
+                                                var keyCode = event.keyCode || event.which;
+                                                if(keyCode == "13"){
+                                                    var x = $(" #searchdata4").val()
+                                                    window.location.href="{{url('search')}}/"+x
+                                                }
+                                            });
+
                                             $("#searchres4").click(function(){
                                                 var x = $(" #searchdata4").val()
                                                 window.location.href="{{url('search')}}/"+x
@@ -382,3 +390,4 @@
     })();
 </script>
 </html>
+                                             
