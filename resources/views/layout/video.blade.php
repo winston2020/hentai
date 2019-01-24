@@ -264,8 +264,8 @@
         <nav class="off-menu">
             <ul>
                 <li class="canvas-close"><a href="{{url('/#')}}"><i class="fa fa-times"></i> 关闭</a></li>
-                <li class="menu-item current_so"><a target="_blank" href="{{url('search')}}">搜索漫画</a></li>
-                <li class="menu-item current_so"><a target="_blank" href="{{url('down')}}">App下载</a></li>
+                <li class="menu-item current_so"><a href="{{url('search')}}">搜索漫画</a></li>
+                <li class="menu-item current_so"><a href="{{url('down')}}">App下载</a></li>
                 <li id="menu-item-35843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item menu-item-35843">
                     <a href="{{url('/')}}">首页</a>
                 </li>
